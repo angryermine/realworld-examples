@@ -7,7 +7,7 @@
     "module": "lib/index.esm.js",
     "types": "lib/types",
     "scripts": {
-        "build": "rollup -c rollup.config.ts",
+        "build": "rimraf lib && rollup -c rollup.config.ts",
         "format": "prettier --write src"
     },
     "devDependencies": {
