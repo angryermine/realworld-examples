@@ -1,0 +1,56 @@
+{
+    "name": "@project/sagun",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "@project/api": "^0.0.1",
+        "@iiiristram/sagun": "^0.0.9",
+        "immutable": "^4.0.0-rc.12",
+        "ky": "^0.26.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-redux": "^7.2.2",
+        "react-router-dom": "^5.2.0",
+        "redux": "^4.0.5",
+        "redux-saga": "^1.1.3",
+        "reflect-metadata": "^0.1.13",
+        "typed-redux-saga": "^1.3.1"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "^5.11.4",
+        "@testing-library/react": "^11.1.0",
+        "@testing-library/user-event": "^12.1.10",
+        "@types/jest": "^26.0.15",
+        "@types/node": "^12.0.0",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/react-redux": "^7.1.16",
+        "@types/react-router-dom": "^5.1.7",
+        "react-scripts": "^4.0.2"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "format": "prettier --write src"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
