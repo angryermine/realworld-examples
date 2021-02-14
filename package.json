@@ -7,6 +7,7 @@
     "scripts": {
         "format": "yarn workspaces run format",
         "build:api": "yarn workspace @project/api build",
+        "build:ui": "yarn workspace @project/ui build",
     },
     "devDependencies": {
         "prettier": "^2.2.1",
