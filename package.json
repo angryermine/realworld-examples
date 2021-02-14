@@ -6,6 +6,7 @@
     "private": true,
     "scripts": {
         "format": "yarn workspaces run format",
+        "build:api": "yarn workspace @project/api build",
     },
     "devDependencies": {
         "prettier": "^2.2.1",
