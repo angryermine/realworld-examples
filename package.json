@@ -8,8 +8,10 @@
         "format": "yarn workspaces run format",
         "build:api": "yarn workspace @project/api build",
         "build:sagun": "yarn workspace @project/sagun build",
+        "build:effector": "yarn workspace @project/effector build",
         "build:ui": "yarn workspace @project/ui build",
         "start:sagun": "yarn workspace @project/sagun start",
+        "start:effector": "yarn workspace @project/effector start"
     },
     "devDependencies": {
         "prettier": "^2.2.1",
