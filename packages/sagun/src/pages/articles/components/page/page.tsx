@@ -1,6 +1,8 @@
 import React, {Suspense, useEffect} from 'react';
 import {useServiceConsumer} from '@iiiristram/sagun';
 
+import {Spinner} from '@project/ui';
+
 import {ArticlesService} from '../../services/articles';
 import {Articles} from '../articles';
 
@@ -14,7 +16,7 @@ export function Page() {
     return (
         <div>
             <div>Articles</div>
-            <Suspense fallback="Loading...">
+            <Suspense fallback={<Spinner />}>
                 <Articles />
             </Suspense>
         </div>

@@ -10,16 +10,21 @@
         "lib"
     ],
     "scripts": {
-        "build": "rollup -c rollup.config.ts",
+        "build": "rimraf lib && rollup -c rollup.config.ts",
         "format": "prettier --write src"
+    },
+    "dependencies": {
+        "react-bootstrap": "^1.4.3"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^11.0.2",
         "@rollup/plugin-node-resolve": "^7.1.1",
         "rollup": "^1.31.0",
+        "rollup-plugin-css-porter": "^1.0.2",
         "rollup-plugin-typescript2": "^0.25.3"
     },
     "peerDependencies": {
+        "bootstrap": "^4.6.0",
         "react": "^17.0.1"
     }
 }

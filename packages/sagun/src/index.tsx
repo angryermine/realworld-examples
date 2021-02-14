@@ -15,6 +15,9 @@ import {call} from 'typed-redux-saga';
 
 import {App} from './app';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@project/ui/lib/ui.min.css';
+
 const sagaMiddleware = createSagaMiddleware();
 const store = applyMiddleware(sagaMiddleware)(createStore)(
     combineReducers({

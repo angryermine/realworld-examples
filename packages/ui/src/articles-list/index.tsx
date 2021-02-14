@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
 import {Article} from '@project/api';
 
@@ -12,10 +12,7 @@ export function ArticlesList({articles}: ArticlesListProps) {
     return (
         <div>
             {articles?.map((article) => (
-                <Fragment key={article.slug}>
-                    <ArticlePreview article={article} />
-                    <hr />
-                </Fragment>
+                <ArticlePreview key={article.slug} article={article} />
             ))}
         </div>
     );
