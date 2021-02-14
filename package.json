@@ -1,0 +1,19 @@
+{
+    "name": "realworld-examples",
+    "version": "0.0.1",
+    "author": "Leonid Fedorov <lfedorov@live.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "format": "yarn workspaces run format",
+    },
+    "devDependencies": {
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.4"
+    },
+    "workspaces": {
+        "packages": [
+            "packages/*"
+        ]
+    }
+}

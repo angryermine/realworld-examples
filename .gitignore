@@ -1,0 +1,33 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# production
+build
+lib
+
+# temp
+**/tmp
+**/temp
+
+# logs
+*.log
+
+# ide
+.vscode
+
+# cache
+.eslintcache
+.cache
+
+# create-react-app
+react-app-env.d.ts
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
