@@ -12,8 +12,10 @@ export interface ArticlePreviewProps {
 export function ArticlePreview({article}: ArticlePreviewProps) {
     return (
         <Card className="ArticlePreview">
-            <Card.Title>{article.title}</Card.Title>
-            <Card.Text>{article.description}</Card.Text>
+            <Card.Body>
+                <Card.Title>{article.title}</Card.Title>
+                <Card.Text>{article.description}</Card.Text>
+            </Card.Body>
         </Card>
     );
 }
