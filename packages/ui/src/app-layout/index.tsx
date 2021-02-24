@@ -1,8 +1,8 @@
 import React, {PropsWithChildren} from 'react';
-import {Container} from 'react-bootstrap';
+import Box from '@material-ui/core/Box';
 
 export type AppLayoutProps = PropsWithChildren<{}>;
 
 export function AppLayout({children}: AppLayoutProps) {
-    return <Container>{children}</Container>;
+    return <Box>{children}</Box>;
 }
