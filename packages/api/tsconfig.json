@@ -1,11 +1,8 @@
 {
     "compilerOptions": {
         "target": "ESNext",
+        "module": "ESNext",
         "moduleResolution": "node",
-        "declaration": true,
-        "outDir": "lib/",
-        "declarationDir": "lib/types",
-        "esModuleInterop": true
     },
     "include": ["src/**/*"]
 }
