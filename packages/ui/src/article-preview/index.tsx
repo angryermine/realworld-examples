@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card} from 'react-bootstrap';
+import {Card, CardContent, Typography} from '@material-ui/core';
 
 import {Article} from '@project/api';
 
@@ -12,10 +12,14 @@ export interface ArticlePreviewProps {
 export function ArticlePreview({article}: ArticlePreviewProps) {
     return (
         <Card className="ArticlePreview">
-            <Card.Body>
-                <Card.Title>{article.title}</Card.Title>
-                <Card.Text>{article.description}</Card.Text>
-            </Card.Body>
+            <CardContent>
+                <Typography variant="h5" component="h2">
+                    {article.title}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {article.description}
+                </Typography>
+            </CardContent>
         </Card>
     );
 }
