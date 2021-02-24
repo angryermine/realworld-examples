@@ -5,7 +5,7 @@ import {articles, MultipleArticlesResponse} from '@project/api';
 
 export const PageGate = createGate();
 
-export const fetchArticlesFx = createEffect(() => articles.getArticles({offset: 0, limit: 50}));
+export const fetchArticlesFx = createEffect(() => articles.list({offset: 0, limit: 50}));
 
 export const $articles = createStore<MultipleArticlesResponse | null>(null).on(
     fetchArticlesFx.doneData,
