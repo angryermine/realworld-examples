@@ -13,6 +13,6 @@ export class ArticlesService extends Service {
     @daemon()
     @operation(OPERATIONS.LOAD_ARTICLES)
     public *loadArticles() {
-        return yield* call(articles.getArticles, {offset: 0, limit: 50});
+        return yield* call(articles.list, {offset: 0, limit: 50});
     }
 }
