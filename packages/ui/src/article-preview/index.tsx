@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardContent, Typography} from '@material-ui/core';
+import {Card, CardContent, Typography, CardHeader, Avatar} from '@material-ui/core';
 
 import {Article} from '@project/api';
 
@@ -9,9 +9,26 @@ export interface ArticlePreviewProps {
     article: Article;
 }
 
+const DATE_OPTIONS = {
+    hour: 'numeric',
+    minute: 'numeric',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+};
+
+function formatDate(date: string) {
+    return new Intl.DateTimeFormat(navigator.language, DATE_OPTIONS).format(new Date(date));
+}
+
 export function ArticlePreview({article}: ArticlePreviewProps) {
     return (
         <Card className="ArticlePreview">
+            <CardHeader
+                avatar={<Avatar alt={article.author.username} src={article.author.image} />}
+                title={article.author.username}
+                subheader={formatDate(article.createdAt)}
+            />
             <CardContent>
                 <Typography variant="h5" component="h2">
                     {article.title}
