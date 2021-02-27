@@ -9,7 +9,7 @@ export interface ArticlePreviewProps {
     article: Article;
 }
 
-const DATE_OPTIONS = {
+const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
     hour: 'numeric',
     minute: 'numeric',
     year: 'numeric',
@@ -18,7 +18,7 @@ const DATE_OPTIONS = {
 };
 
 function formatDate(date: string) {
-    return new Intl.DateTimeFormat(navigator.language, DATE_OPTIONS).format(new Date(date));
+    return new Intl.DateTimeFormat('en', DATE_OPTIONS).format(new Date(date)); // ToDo use locale
 }
 
 export function ArticlePreview({article}: ArticlePreviewProps) {

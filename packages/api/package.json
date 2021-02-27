@@ -10,13 +10,10 @@
         "build": "rimraf lib && microbundle-crl --no-css-modules --no-compress --format modern,cjs",
         "format": "prettier --write src"
     },
+    "dependencies": {
+        "axios": "^0.21.1"
+    },
     "devDependencies": {
         "microbundle-crl": "^0.13.10"
-    },
-    "peerDependencies": {
-        "ky": "^0.26.0"
-    },
-    "dependencies": {
-        "typescript": "^4.1.5"
     }
 }
