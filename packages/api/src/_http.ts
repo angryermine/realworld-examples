@@ -1,10 +1,8 @@
-import ky, {Options} from 'ky';
+import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 
-const API_ROOT = 'https://conduit.productionready.io/api';
+type SearchParams = Record<string, any>;
 
-type SearchParams = Options['searchParams'];
-
-function prepareQuery<T extends object>(obj?: T): SearchParams {
+function prepareQuery<T extends SearchParams>(obj?: T): SearchParams {
     if (!obj) {
         return;
     }
@@ -18,29 +16,38 @@ function prepareQuery<T extends object>(obj?: T): SearchParams {
     }, {});
 }
 
+const DEFAULT_CONFIG: AxiosRequestConfig = {
+    baseURL: 'https://conduit.productionready.io/api',
+    xsrfHeaderName: 'X-CSRF-TOKEN',
+    xsrfCookieName: 'CSRF-TOKEN',
+    withCredentials: true,
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+    },
+};
+
 export const http = {
     get<TQuery extends object, TRes>(url: string, query?: TQuery) {
-        return ky
-            .get(`${API_ROOT}/${url}`, {
-                searchParams: prepareQuery(query),
+        const cfg = {
+            ...DEFAULT_CONFIG,
+            params: prepareQuery(query),
+        };
+
+        return axios
+            .get<TQuery, AxiosResponse<TRes>>(url, {
+                ...DEFAULT_CONFIG,
+                params: prepareQuery(query),
             })
-            .json<TRes>();
+            .then(({data}) => data);
     },
     post<TReq, TRes>(url: string, body?: TReq) {
-        return ky
-            .post(`${API_ROOT}/${url}`, {
-                body: JSON.stringify(body),
-            })
-            .json<TRes>();
+        return axios.post<TReq, AxiosResponse<TRes>>(url, body, DEFAULT_CONFIG).then(({data}) => data);
     },
     put<TReq, TRes>(url: string, body?: TReq) {
-        return ky
-            .put(`${API_ROOT}/${url}`, {
-                body: JSON.stringify(body),
-            })
-            .json<TRes>();
+        return axios.put<TReq, AxiosResponse<TRes>>(url, body, DEFAULT_CONFIG).then(({data}) => data);
     },
-    delete<T>(url: string) {
-        return ky.delete(`${API_ROOT}/${url}`).json<T>();
+    delete<TRes>(url: string) {
+        return axios.delete<never, AxiosResponse<TRes>>(url, DEFAULT_CONFIG).then(({data}) => data);
     },
 };

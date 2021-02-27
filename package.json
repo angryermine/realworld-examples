@@ -7,11 +7,13 @@
     "scripts": {
         "format": "yarn workspaces run format",
         "build:api": "yarn workspace @project/api build",
-        "build:sagun": "yarn workspace @project/sagun build",
         "build:effector": "yarn workspace @project/effector build",
+        "build:effector-razzle": "yarn workspace @project/effector-razzle build",
+        "build:sagun": "yarn workspace @project/sagun build",
         "build:ui": "yarn workspace @project/ui build",
-        "start:sagun": "yarn workspace @project/sagun start",
-        "start:effector": "yarn workspace @project/effector start"
+        "start:effector": "yarn workspace @project/effector start",
+        "start:effector-razzle": "yarn workspace @project/effector-razzle start",
+        "start:sagun": "yarn workspace @project/sagun start"
     },
     "devDependencies": {
         "prettier": "^2.2.1",
