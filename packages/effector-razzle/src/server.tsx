@@ -6,6 +6,7 @@ import {StaticRouter} from 'react-router-dom';
 import {matchRoutes, MatchedRoute} from 'react-router-config';
 import {fork, serialize, allSettled} from 'effector/fork';
 import {root, forward, Event} from 'effector-root';
+import {ServerStyleSheets} from '@material-ui/core/styles';
 
 import {StartParams} from './types';
 import {App} from './app';
@@ -69,6 +70,7 @@ export default express()
         console.info('[REQUEST] %s %s', req.method, req.url);
         const timeStart = performance.now();
         const scope = fork(root);
+        const sheets = new ServerStyleSheets();
 
         try {
             await allSettled(serverStarted, {
@@ -81,48 +83,50 @@ export default express()
 
         const context = {};
 
-        const stream = ReactDOMServer.renderToNodeStream(
-            <StaticRouter context={context} location={req.url}>
-                <App root={scope} />
-            </StaticRouter>,
+        const html = ReactDOMServer.renderToString(
+            sheets.collect(
+                <StaticRouter context={context} location={req.url}>
+                    <App root={scope} />
+                </StaticRouter>,
+            ),
         );
 
         const storesValues = serialize(scope);
+        const css = sheets.toString();
 
-        res.write(htmlStart(assets.client.css, assets.client.js));
-        stream.pipe(res, {end: false});
-        stream.on('end', () => {
-            res.end(htmlEnd(storesValues));
-            console.info('[PERF] sent page at %sms', (performance.now() - timeStart).toFixed(2));
-        });
+        res.send(renderFullPage(html, css, assets.client.css, assets.client.js, storesValues));
+        console.info('[PERF] sent page at %sms', (performance.now() - timeStart).toFixed(2));
     });
 
-function htmlStart(assetsCss: string, assetsJs: string) {
+function renderFullPage(
+    html: string,
+    css: string,
+    assetsCss: string,
+    assetsJs: string,
+    storesValues: Record<string, unknown>,
+) {
     return `<!doctype html>
-    <html lang="">
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta charSet='utf-8' />
-        <title>Razzle TypeScript</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        ${assetsCss ? `<link rel="stylesheet" href="${assetsCss}">` : ''}
-          ${
-              process.env.NODE_ENV === 'production'
-                  ? `<script src="${assetsJs}" defer></script>`
-                  : `<script src="${assetsJs}" defer crossorigin></script>`
-          }
-    </head>
-    <body>
-        <div id="root">`;
-}
-
-function htmlEnd(storesValues: Record<string, unknown>): string {
-    return `</div>
-        <script>
-          window.INITIAL_STATE = ${JSON.stringify(storesValues)}
-        </script>
-    </body>
-</html>`;
+        <html lang="">
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta charSet='utf-8' />
+            <title>Razzle TypeScript</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style id="jss-server-side">${css}</style>
+            ${assetsCss ? `<link rel="stylesheet" href="${assetsCss}">` : ''}
+            ${
+                process.env.NODE_ENV === 'production'
+                    ? `<script src="${assetsJs}" defer></script>`
+                    : `<script src="${assetsJs}" defer crossorigin></script>`
+            }
+        </head>
+        <body>
+            <div id="root">${html}</div>
+            <script>
+            window.INITIAL_STATE = ${JSON.stringify(storesValues)}
+            </script>
+        </body>
+    </html>`;
 }
 
 function lookupStartEvent<P>(match: MatchedRoute<P>): Event<StartParams> | undefined {
