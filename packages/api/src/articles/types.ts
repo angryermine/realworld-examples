@@ -1,4 +1,4 @@
-import {Article} from '../types';
+import {Article, Comment} from '../types';
 
 export type ArticlesRequest = {
     /**
