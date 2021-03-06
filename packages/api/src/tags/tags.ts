@@ -5,7 +5,7 @@ export const tags = {
     /**
      * Get tags. Auth not required
      */
-    list() {
+    list(): Promise<TagsResponse> {
         return http.get<never, TagsResponse>('tags');
     },
 };
