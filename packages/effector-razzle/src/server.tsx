@@ -7,6 +7,7 @@ import {matchRoutes, MatchedRoute} from 'react-router-config';
 import {fork, serialize, allSettled} from 'effector/fork';
 import {root, forward, Event} from 'effector-root';
 import {ServerStyleSheets} from '@material-ui/core/styles';
+import sanitize from 'sanitize-html';
 
 import {StartParams} from './types';
 import {App} from './app';
@@ -105,6 +106,8 @@ function renderFullPage(
     assetsJs: string,
     storesValues: Record<string, unknown>,
 ) {
+    const INITIAL_STATE = sanitize(JSON.stringify(storesValues));
+
     return `<!doctype html>
         <html lang="">
         <head>
@@ -123,7 +126,7 @@ function renderFullPage(
         <body>
             <div id="root">${html}</div>
             <script>
-            window.INITIAL_STATE = ${JSON.stringify(storesValues)}
+            window.INITIAL_STATE = ${INITIAL_STATE}
             </script>
         </body>
     </html>`;
