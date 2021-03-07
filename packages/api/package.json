@@ -1,19 +1,21 @@
 {
     "name": "@project/api",
     "version": "0.0.1",
-    "license": "MIT",
     "private": true,
     "main": "lib/index.js",
     "module": "lib/index.modern.js",
     "types": "lib/index.d.ts",
+    "files": [
+        "lib"
+    ],
     "scripts": {
-        "build": "rimraf lib && microbundle-crl --no-css-modules --no-compress --format modern,cjs",
+        "prepare": "rimraf lib && microbundle-crl --no-css-modules --no-compress --format modern,cjs",
         "format": "prettier --write src"
     },
     "dependencies": {
         "axios": "^0.21.1"
     },
     "devDependencies": {
-        "microbundle-crl": "^0.13.10"
+        "microbundle-crl": "^0.13.11"
     }
 }

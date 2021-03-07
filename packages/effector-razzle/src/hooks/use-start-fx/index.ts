@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect} from 'react';
+import {useMemo, useEffect} from 'react';
 import {Event} from 'effector-root';
 import {useEvent} from 'effector-react/ssr';
 import {useParams, useLocation} from 'react-router';
