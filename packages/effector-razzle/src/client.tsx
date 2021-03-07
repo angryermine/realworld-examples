@@ -6,6 +6,8 @@ import {fork, hydrate} from 'effector/fork';
 import {root} from 'effector-root';
 import {App} from './app';
 
+import '@project/ui/lib/index.css';
+
 hydrate(root, {values: INITIAL_STATE});
 
 const scope = fork(root);

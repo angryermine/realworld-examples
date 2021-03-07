@@ -21,6 +21,7 @@ lib
 # cache
 .eslintcache
 .cache
+cache
 
 # create-react-app
 react-app-env.d.ts

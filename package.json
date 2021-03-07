@@ -6,11 +6,11 @@
     "private": true,
     "scripts": {
         "format": "yarn workspaces run format",
-        "build:api": "yarn workspace @project/api build",
+        "prepare:api": "yarn workspace @project/api prepare",
+        "prepare:ui": "yarn workspace @project/ui prepare",
         "build:effector": "yarn workspace @project/effector build",
         "build:effector-razzle": "yarn workspace @project/effector-razzle build",
         "build:sagun": "yarn workspace @project/sagun build",
-        "build:ui": "yarn workspace @project/ui build",
         "start:effector": "yarn workspace @project/effector start",
         "start:effector-razzle": "yarn workspace @project/effector-razzle start",
         "start:sagun": "yarn workspace @project/sagun start"
@@ -18,7 +18,7 @@
     "devDependencies": {
         "prettier": "^2.2.1",
         "rimraf": "^3.0.2",
-        "typescript": "^4.1.4"
+        "typescript": "^4.2.3"
     },
     "workspaces": {
         "packages": [
