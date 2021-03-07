@@ -9,13 +9,13 @@
         "lib"
     ],
     "scripts": {
-        "prepare": "rimraf lib && microbundle-crl --no-css-modules --no-compress --format modern,cjs",
+        "prepare": "rimraf lib && microbundle --no-css-modules --no-compress --format modern,cjs",
         "format": "prettier --write src"
     },
     "dependencies": {
         "axios": "^0.21.1"
     },
     "devDependencies": {
-        "microbundle-crl": "^0.13.11"
+        "microbundle": "^0.13.0"
     }
 }
