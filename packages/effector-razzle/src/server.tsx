@@ -126,7 +126,7 @@ function renderFullPage(
         <body>
             <div id="root">${html}</div>
             <script>
-            window.INITIAL_STATE = ${INITIAL_STATE}
+                window.INITIAL_STATE = ${INITIAL_STATE}
             </script>
         </body>
     </html>`;
