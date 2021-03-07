@@ -36,6 +36,9 @@ export function ArticlePreview({article}: ArticlePreviewProps) {
                 <Typography variant="body2" component="p">
                     {article.description}
                 </Typography>
+                <Typography variant="body2" component="p">
+                    {article.body}
+                </Typography>
             </CardContent>
         </Card>
     );
