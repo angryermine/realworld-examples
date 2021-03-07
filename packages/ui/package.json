@@ -9,7 +9,7 @@
         "lib"
     ],
     "scripts": {
-        "prepare": "rimraf lib && microbundle-crl --no-css-modules --no-compress --format modern,cjs",
+        "prepare": "rimraf lib && microbundle --no-css-modules --no-compress --jsx=React.createElement --format modern,cjs",
         "format": "prettier --write src"
     },
     "dependencies": {
@@ -18,6 +18,6 @@
         "react": "^17.0.1"
     },
     "devDependencies": {
-        "microbundle-crl": "^0.13.11"
+        "microbundle": "^0.13.0"
     }
 }
