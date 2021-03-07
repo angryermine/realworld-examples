@@ -13,5 +13,5 @@ export function useStartFx(startEvent: Event<StartParams>) {
 
     useEffect(() => {
         start({params, query});
-    }, []);
+    }, [{params, query}]);
 }
