@@ -1,5 +1,5 @@
 import React from 'react';
-import {useStore} from 'effector-react/ssr';
+import {useStore} from 'effector-react';
 
 import {ArticlesList} from '@project/ui';
 

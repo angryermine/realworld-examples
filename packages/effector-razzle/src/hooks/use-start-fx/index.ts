@@ -1,6 +1,6 @@
 import {useMemo, useEffect} from 'react';
 import {Event} from 'effector-root';
-import {useEvent} from 'effector-react/ssr';
+import {useEvent} from 'effector-react';
 import {useParams, useLocation} from 'react-router';
 
 import {StartParams} from 'types';
